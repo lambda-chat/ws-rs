@@ -29,7 +29,7 @@ async fn task_b(
 #[tokio::main]
 async fn main() {
     let app = Router::new().route("/ws", get(ws_handler));
-    let addr = SocketAddr::from(([127, 0, 0, 1], 8000));
+    let addr = SocketAddr::from(([0, 0, 0, 0], 8000));
     println!("listening on {}", addr);
     let listener = tokio::net::TcpListener::bind(addr).await.unwrap();
     serve(listener, app.into_make_service()).await.unwrap();
